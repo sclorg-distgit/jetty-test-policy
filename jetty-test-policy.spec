@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.2
-Release:        10.9%{?dist}
+Release:        10.10%{?dist}
 Summary:        Jetty test policy files
 License:        ASL 2.0 or EPL
 URL:            http://www.eclipse.org/jetty/
@@ -14,7 +14,7 @@ Source3:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-jetty-toolchain
+BuildRequires:  %{?scl_prefix}jetty-toolchain
 
 %description
 Jetty test policy files.
@@ -27,20 +27,20 @@ Summary:        API documentation for %{pkg_name}
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 cp -p %{SOURCE2} %{SOURCE3} .
 %mvn_file : %{pkg_name}
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -52,6 +52,9 @@ set -e -x
 %doc epl-v10.html LICENSE-2.0.txt
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.2-10.10
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.2-10.9
 - maven33 rebuild
 
