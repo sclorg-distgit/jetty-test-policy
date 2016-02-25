@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.2
-Release:        10.10%{?dist}
+Release:        10.11%{?dist}
 Summary:        Jetty test policy files
 License:        ASL 2.0 or EPL
 URL:            http://www.eclipse.org/jetty/
@@ -13,7 +13,7 @@ Source2:        http://www.eclipse.org/legal/epl-v10.html
 Source3:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}jetty-toolchain
 
 %description
@@ -52,6 +52,9 @@ set -e -x
 %doc epl-v10.html LICENSE-2.0.txt
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.2-10.11
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.2-10.10
 - maven33 rebuild #2
 
